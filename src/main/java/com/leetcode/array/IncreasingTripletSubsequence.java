@@ -1,13 +1,24 @@
 package com.leetcode.array;
 
 
-
 public class IncreasingTripletSubsequence {
     private IncreasingTripletSubsequence() {
-        
     }
 
     public static boolean increasingTriplet(int[] nums) {
-        throw new UnsupportedOperationException();
+        int smallest = Integer.MAX_VALUE;
+        int biggestAfterSmallest = Integer.MAX_VALUE;
+        for (int n : nums) {
+            if (n <= smallest) {
+                smallest = n;
+            } else {
+                if (n <= biggestAfterSmallest) {
+                    biggestAfterSmallest = n;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
