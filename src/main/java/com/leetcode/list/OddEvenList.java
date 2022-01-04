@@ -6,36 +6,40 @@ public class OddEvenList {
 
 
     public static ListNode oddEvenList(ListNode head) {
-        ListNode headOdd = null;
-        ListNode headEven = null;
-        ListNode tailOdd = null;
-        ListNode tailEven = null;
+        SimpleDeque oddDeque = new SimpleDeque();
+        SimpleDeque evenDeque = new SimpleDeque();
         ListNode it = head;
         boolean isOdd = true;
         while (it != null) {
             if (isOdd) {
-                if (headOdd == null) {
-                    headOdd = new ListNode(it.val);
-                    tailOdd = headOdd;
-                } else {
-                    tailOdd.next = new ListNode(it.val);
-                    tailOdd = tailOdd.next;
-                }
+                oddDeque.add(it.val);
             } else {
-                if (headEven == null) {
-                    headEven = new ListNode(it.val);
-                    tailEven = headEven;
-                } else {
-                    tailEven.next = new ListNode(it.val);
-                    tailEven = tailEven.next;
-                }
+                evenDeque.add(it.val);
             }
             isOdd = !isOdd;
             it = it.next;
         }
-        if (tailOdd != null) {
-            tailOdd.next = headEven;
+        if (oddDeque.tail != null) {
+            oddDeque.tail.next = evenDeque.head;
         }
-        return headOdd;
+        return oddDeque.head;
+    }
+
+    private static class SimpleDeque {
+        private ListNode head;
+        private ListNode tail;
+
+        private SimpleDeque() {
+        }
+
+        public void add(final int val) {
+            if (head == null) {
+                head = new ListNode(val);
+                tail = head;
+            } else {
+                tail.next = new ListNode(val);
+                tail = tail.next;
+            }
+        }
     }
 }
