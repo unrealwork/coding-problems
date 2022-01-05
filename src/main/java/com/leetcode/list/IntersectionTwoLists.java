@@ -1,50 +1,60 @@
 package com.leetcode.list;
 
-public class IntersectionTwoLists {
+/**
+ * @see <a href=""></a>
+ */
+@SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+public final class IntersectionTwoLists {
     private IntersectionTwoLists() {
     }
 
-    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        int sizeA = size(headA);
-        int sizeB = size(headB);
-        if (sizeA > sizeB) {
-            int diff = sizeA - sizeB;
-            ListNode aDiffthNode = skip(headA, diff);
-            return sameSizeIntersection(aDiffthNode, headB);
-        } else {
-            return sameSizeIntersection(headA, skip(headB, sizeB - sizeA));
-        }
+    /**
+     * Tail intersection of two linked lists.
+     *
+     * @param headA head of first list.
+     * @param headB head of second list.
+     * @return head of intersection part.
+     */
+    public static ListNode getIntersectionNode(final ListNode headA, final ListNode headB) {
+        final int sizeA = size(headA);
+        final int sizeB = size(headB);
+        return sizeA > sizeB ?
+                sameSizeIntersection(skip(headA, sizeA - sizeB), headB)
+                : sameSizeIntersection(headA, skip(headB, sizeB - sizeA));
     }
 
-    private static ListNode skip(ListNode head, int diff) {
-        ListNode it = head;
+    private static ListNode skip(final ListNode head, final int diff) {
+        ListNode iterator = head;
         int skipped = 0;
         while (skipped < diff) {
-            if (it == null) {
+            if (iterator == null) {
                 throw new IllegalStateException("Unable to skip " + diff + " nodes");
             }
             skipped++;
-            it = it.next;
+            iterator = iterator.next;
         }
-        return it;
+        return iterator;
     }
 
-    private static int size(ListNode head) {
+    private static int size(final ListNode head) {
         int size = 0;
-        ListNode it = head;
-        while (it != null) {
+        ListNode iterator = head;
+        while (iterator != null) {
             size++;
-            it = it.next;
+            iterator = iterator.next;
         }
         return size;
     }
 
-    private static ListNode sameSizeIntersection(ListNode headA, ListNode headB) {
+    @SuppressWarnings("PMD.CompareObjectsWithEquals")
+    private static ListNode sameSizeIntersection(final ListNode headA, final ListNode headB) {
         ListNode itA = headA;
         ListNode itB = headB;
+        ListNode intersection = null;
         while (itA != null) {
             if (itA == itB) {
-                return itA;
+                intersection = itA;
+                break;
             }
             itA = itA.next;
             if (itB == null) {
@@ -52,6 +62,6 @@ public class IntersectionTwoLists {
             }
             itB = itB.next;
         }
-        return null;
+        return intersection;
     }
 }
