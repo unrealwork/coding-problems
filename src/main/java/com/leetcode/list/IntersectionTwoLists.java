@@ -1,7 +1,7 @@
 package com.leetcode.list;
 
 /**
- * @see <a href=""></a>
+ * @see <a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">Intersection of Two Linked Lists</a>
  */
 @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
 public final class IntersectionTwoLists {
