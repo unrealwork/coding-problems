@@ -26,6 +26,9 @@ public class ListConverter implements ArgumentConverter {
     @Override
     public Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
         final String strList = (String) source;
+        if (strList.trim().isEmpty()) {
+            return null;
+        }
         final int[] nums = Arrays.stream(strList.split(",\\s*"))
                 .mapToInt(Integer::parseInt)
                 .toArray();
