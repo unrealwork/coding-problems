@@ -10,6 +10,9 @@ public class IntArrayConverter implements ArgumentConverter {
     @Override
     public Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
         final String argString = (String) source;
+        if (argString.trim().isEmpty()) {
+            return new int[] {};
+        }
         return Arrays.stream(argString.split(",\\s*"))
                 .mapToInt(Integer::parseInt)
                 .toArray();

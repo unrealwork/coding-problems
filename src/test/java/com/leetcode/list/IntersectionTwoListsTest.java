@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class IntersectionTwoListsTest {
     @ParameterizedTest
     @CsvSource( {"'4,1', '5,6,1', '8,4,5'", "'1,9,1', '3', '2,4'", "'2,6,4', '1,5', ''"})
-    void test(final @ConvertWith(ListConverter.class) ListNode beginA,
-              final @ConvertWith(ListConverter.class) ListNode beginB,
-              final @ConvertWith(ListConverter.class) ListNode intersection) {
+    void test(final @ConvertWith(ListNodeConverter.class) ListNode beginA,
+              final @ConvertWith(ListNodeConverter.class) ListNode beginB,
+              final @ConvertWith(ListNodeConverter.class) ListNode intersection) {
         ListNode headA = concat(beginA, intersection);
         ListNode headB = concat(beginB, intersection);
         ListNode computedIntersection = IntersectionTwoLists.getIntersectionNode(headA, headB);
