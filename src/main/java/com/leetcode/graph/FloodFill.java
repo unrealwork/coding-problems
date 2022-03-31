@@ -1,10 +1,54 @@
 package com.leetcode.graph;
 
 public class FloodFill {
+    private FloodFill() {
+    }
+
     public static int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         Image img = Image.fromArray(image);
-        img.flood(sr, sc, newColor);
+        FloodFiller floodFiller = new FloodFiller(img, sr, sc, newColor);
+        floodFiller.flood();
         return img.img;
+    }
+
+    private static class FloodFiller {
+        private final Image image;
+        private final boolean[][] visited;
+        private final int r;
+        private final int c;
+        private final int color;
+        private final int newColor;
+
+        FloodFiller(Image image, int r, int c, int newColor) {
+            this.image = image;
+            this.visited = new boolean[image.img.length][];
+            this.r = r;
+            this.c = c;
+            this.color = image.getColor(r, c);
+            this.newColor = newColor;
+        }
+
+        void flood() {
+            flood(r, c);
+        }
+
+        private void flood(int r, int c) {
+            if (image.isValid(r, c)) {
+                if (visited[r] == null) {
+                    visited[r] = new boolean[image.img[r].length];
+                }
+                if (!visited[r][c]) {
+                    visited[r][c] = true;
+                    if (image.getColor(r, c) == color) {
+                        image.setColor(r, c, newColor);
+                        flood(r + 1, c);
+                        flood(r - 1, c);
+                        flood(r, c + 1);
+                        flood(r, c - 1);
+                    }
+                }
+            }
+        }
     }
 
     private static class Image {
@@ -28,28 +72,6 @@ public class FloodFill {
 
         public boolean isValid(int r, int c) {
             return r >= 0 && r < img.length && c >= 0 && c < img[r].length;
-        }
-
-        void flood(int r, int c, int newColor) {
-            flood(r, c, newColor, new boolean[img.length][]);
-        }
-
-        private void flood(int r, int c, int newColor, boolean[][] visited) {
-            if (isValid(r, c)) {
-                if (visited[r] == null) {
-                    visited[r] = new boolean[img[r].length];
-                }
-                if (!visited[r][c]) {
-                    visited[r][c] = true;
-                    if (getColor(r, c) == 1) {
-                        setColor(r, c, newColor);
-                        flood(r + 1, c, newColor, visited);
-                        flood(r - 1, c, newColor, visited);
-                        flood(r, c + 1, newColor, visited);
-                        flood(r, c - 1, newColor, visited);
-                    }
-                }
-            }
         }
     }
 
