@@ -14,6 +14,7 @@ final class BinaryTreePathsTest {
     @ParameterizedTest
     @CsvSource( {
             "'1,2,3','1->2,1->3'",
+            "'1,2,null','1->2'",
             "'',''"
     })
     void testBinaryTreePaths(@ConvertWith(TreeNodeConverter.class) TreeNode treeNode,
