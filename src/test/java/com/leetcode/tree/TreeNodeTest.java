@@ -18,6 +18,16 @@ class TreeNodeTest {
         Assertions.assertEquals(expected, p.equals(q));
     }
 
+    @ParameterizedTest
+    @CsvSource( {
+            "'1,2,3','1,2,3', true",
+            "'1,2,null','1,2,3', false"
+    })
+    void testHashCode(@ConvertWith(TreeNodeConverter.class) TreeNode p, @ConvertWith(TreeNodeConverter.class) TreeNode q, boolean expected) {
+        boolean isHashCodesEqual = p.hashCode() == q.hashCode();
+        Assertions.assertEquals(expected, isHashCodesEqual);
+    }
+
     @Test
     void testDiffClassEquals() {
         Assertions.assertNotEquals("", new TreeNode(1));
