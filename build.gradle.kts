@@ -46,3 +46,8 @@ sonarqube {
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
     }
 }
+
+
+java {
+    version = 17
+}
