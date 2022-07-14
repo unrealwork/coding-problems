@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 final class BinaryTreePaths {
+    private static final String ARROW = "->";
+
     private BinaryTreePaths() {
 
     }
@@ -16,11 +18,12 @@ final class BinaryTreePaths {
 
     private static void binaryTreePathsRec(TreeNode root, String s, List<String> res) {
         if (root != null) {
+            String next = s.isEmpty() ? Integer.toString(root.val) : s + ARROW + root.val;
             if (root.left == null && root.right == null) {
-                res.add(s + root.val);
+                res.add(next);
             } else {
-                binaryTreePathsRec(root.left, s + root.val, res);
-                binaryTreePathsRec(root.right, s + root.val, res);
+                binaryTreePathsRec(root.left, next, res);
+                binaryTreePathsRec(root.right, next, res);
             }
         }
     }

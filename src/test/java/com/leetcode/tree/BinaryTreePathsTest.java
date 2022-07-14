@@ -13,7 +13,7 @@ final class BinaryTreePathsTest {
 
     @ParameterizedTest
     @CsvSource( {
-            "'1,2,3','12,13'",
+            "'1,2,3','1->2,1->3'",
             "'',''"
     })
     void testBinaryTreePaths(@ConvertWith(TreeNodeConverter.class) TreeNode treeNode,
