@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class TreeNodeConverter implements ArgumentConverter {
     @Override
-    public Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
+    public final Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
         final String strList = (String) source;
         if (strList.trim().isEmpty()) {
             return null;
@@ -49,7 +49,10 @@ public class TreeNodeConverter implements ArgumentConverter {
     private static TreeNode nextNode(final LinkedList<Integer> values) {
         if (!values.isEmpty()) {
             Integer val = values.removeFirst();
-            return val != null ? new TreeNode(val) : null;
+            if (val != null) {
+                return new TreeNode(val);
+            }
+            return null;
 
         }
         return null;

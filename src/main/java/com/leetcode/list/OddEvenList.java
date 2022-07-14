@@ -1,6 +1,6 @@
 package com.leetcode.list;
 
-public class OddEvenList {
+final class OddEvenList {
     private OddEvenList() {
     }
 
@@ -25,7 +25,7 @@ public class OddEvenList {
         return oddDeque.head;
     }
 
-    private static class SimpleDeque {
+    private static final class SimpleDeque {
         private ListNode head;
         private ListNode tail;
 

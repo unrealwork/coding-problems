@@ -6,7 +6,14 @@
  */
 
 plugins {
-    id("java")
+    java
+    checkstyle
+    jacoco
+    id("org.sonarqube") version "3.4.0.2513"
+}
+
+object Versions {
+    const val JUNIT = "5.8.2"
 }
 
 repositories {
@@ -14,9 +21,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:${Versions.JUNIT}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.JUNIT}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.JUNIT}")
 }
 
 tasks.test {

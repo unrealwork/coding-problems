@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class IntArrayConverter implements ArgumentConverter {
     @Override
-    public Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
+    public final Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
         final String argString = (String) source;
         if (argString.trim().isEmpty()) {
             return new int[] {};

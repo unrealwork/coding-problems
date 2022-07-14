@@ -1,6 +1,6 @@
 package com.leetcode.array;
 
-public class AvgSalary {
+final class AvgSalary {
     private AvgSalary() {
     }
 
@@ -16,7 +16,10 @@ public class AvgSalary {
             }
         }
 
-        return (count > 0) ? sum / count : Double.NaN;
+        if (count > 0) {
+            return sum / count;
+        }
+        return Double.NaN;
     }
 
     private static int min(int[] nums) {

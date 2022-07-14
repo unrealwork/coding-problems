@@ -1,20 +1,18 @@
 package com.leetcode.tree;
 
-public class TreeNode {
+@SuppressWarnings("checkstyle:visibilitymodifier")
+final class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
 
-    TreeNode() {
+    TreeNode(int v) {
+        this.val = v;
     }
 
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
+    TreeNode(int v, TreeNode leftNode, TreeNode rightNode) {
+        this.val = v;
+        this.left = leftNode;
+        this.right = rightNode;
     }
 }

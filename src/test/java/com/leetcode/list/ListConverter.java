@@ -16,7 +16,7 @@ public class ListConverter implements ArgumentConverter {
     }
 
     @Override
-    public Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
+    public final Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
         int[] arr = (int[]) insArrayConverter.convert(source, context);
         return Arrays.stream(arr)
                 .boxed()
