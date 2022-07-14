@@ -21,7 +21,7 @@ class TreeNodeTest {
     @ParameterizedTest
     @CsvSource( {
             "'1,2,3','1,2,3', true",
-            "'2','3', true",
+            "'2','3', false",
             "'1,2,null','1,2,3', false",
             "'1,null,3','1,2,3', false",
     })
