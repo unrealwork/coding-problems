@@ -20,8 +20,8 @@ final class TreeNode {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof TreeNode) {
-            return isSameTree(this, (TreeNode) obj);
+        if (obj instanceof TreeNode node) {
+            return isSameTree(this, node);
         }
         return false;
     }
