@@ -26,6 +26,14 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.JUNIT}")
 }
 
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        xml.outputLocation
+            .set(File("$buildDir/reports/jacoco/test/jacoco.xml"))
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
