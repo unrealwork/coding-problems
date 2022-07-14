@@ -18,7 +18,8 @@ final class BinaryTreePaths {
 
     private static void binaryTreePathsRec(TreeNode root, String s, List<String> res) {
         if (root != null) {
-            String next = s.isEmpty() ? Integer.toString(root.val) : s + ARROW + root.val;
+            String next;
+            next = addToPath(root, s);
             if (root.left == null && root.right == null) {
                 res.add(next);
             } else {
@@ -26,5 +27,12 @@ final class BinaryTreePaths {
                 binaryTreePathsRec(root.right, next, res);
             }
         }
+    }
+
+    private static String addToPath(TreeNode root, String s) {
+        if (s.isEmpty()) {
+            return Integer.toString(root.val);
+        }
+        return s + ARROW + root.val;
     }
 }
