@@ -37,3 +37,12 @@ tasks.jacocoTestReport {
 tasks.test {
     useJUnitPlatform()
 }
+
+sonarqube {
+    properties {
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.projectKey", "unrealwork_coding-problems")
+        property("sonar.organization", "unrealwork-github")
+        property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
+    }
+}
