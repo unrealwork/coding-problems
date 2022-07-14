@@ -5,6 +5,7 @@ package com.leetcode.tree;
  */
 final class ConstructBinaryTree {
     private ConstructBinaryTree() {
+        //Utility class
     }
 
 
