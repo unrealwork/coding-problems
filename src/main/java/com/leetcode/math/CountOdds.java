@@ -1,12 +1,15 @@
 package com.leetcode.math;
 
-public class CountOdds {
+final class CountOdds {
     private CountOdds() {
-        
+
     }
 
     public static int countOdds(int low, int high) {
-        return (high - low) / 2 + (isOdd(high) || isOdd(low) ? 1 : 0);
+        if (isOdd(high) || isOdd(low)) {
+            return (high - low) / 2 + 1;
+        }
+        return (high - low) / 2;
     }
 
     private static boolean isOdd(int num) {

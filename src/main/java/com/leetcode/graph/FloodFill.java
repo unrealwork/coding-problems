@@ -1,6 +1,6 @@
 package com.leetcode.graph;
 
-public class FloodFill {
+final class FloodFill {
     private FloodFill() {
     }
 
@@ -19,39 +19,39 @@ public class FloodFill {
         private final int color;
         private final int newColor;
 
-        FloodFiller(Image image, int r, int c, int newColor) {
+        FloodFiller(Image image, int row, int column, int newColorValue) {
             this.image = image;
             this.visited = new boolean[image.img.length][];
-            this.r = r;
-            this.c = c;
-            this.color = image.getColor(r, c);
-            this.newColor = newColor;
+            this.r = row;
+            this.c = column;
+            this.color = image.getColor(row, column);
+            this.newColor = newColorValue;
         }
 
         void flood() {
             flood(r, c);
         }
 
-        private void flood(int r, int c) {
-            if (image.isValid(r, c)) {
-                if (visited[r] == null) {
-                    visited[r] = new boolean[image.img[r].length];
+        private void flood(int row, int column) {
+            if (image.isValid(row, column)) {
+                if (visited[row] == null) {
+                    visited[row] = new boolean[image.img[row].length];
                 }
-                if (!visited[r][c]) {
-                    visited[r][c] = true;
-                    if (image.getColor(r, c) == color) {
-                        image.setColor(r, c, newColor);
-                        flood(r + 1, c);
-                        flood(r - 1, c);
-                        flood(r, c + 1);
-                        flood(r, c - 1);
+                if (!visited[row][column]) {
+                    visited[row][column] = true;
+                    if (image.getColor(row, column) == color) {
+                        image.setColor(row, column, newColor);
+                        flood(row + 1, column);
+                        flood(row - 1, column);
+                        flood(row, column + 1);
+                        flood(row, column - 1);
                     }
                 }
             }
         }
     }
 
-    private static class Image {
+    private static final class Image {
         private Image(int[][] img) {
             this.img = img;
         }

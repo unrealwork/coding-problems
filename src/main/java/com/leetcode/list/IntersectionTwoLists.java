@@ -18,9 +18,10 @@ public final class IntersectionTwoLists {
     public static ListNode getIntersectionNode(final ListNode headA, final ListNode headB) {
         final int sizeA = size(headA);
         final int sizeB = size(headB);
-        return sizeA > sizeB ?
-                sameSizeIntersection(skip(headA, sizeA - sizeB), headB)
-                : sameSizeIntersection(headA, skip(headB, sizeB - sizeA));
+        if (sizeA > sizeB) {
+            return sameSizeIntersection(skip(headA, sizeA - sizeB), headB);
+        }
+        return sameSizeIntersection(headA, skip(headB, sizeB - sizeA));
     }
 
     private static ListNode skip(final ListNode head, final int diff) {

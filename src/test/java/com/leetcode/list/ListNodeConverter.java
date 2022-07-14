@@ -23,8 +23,9 @@ public class ListNodeConverter implements ArgumentConverter {
         return head;
     }
 
+
     @Override
-    public Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
+    public final Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
         final String strList = (String) source;
         if (strList.trim().isEmpty()) {
             return null;

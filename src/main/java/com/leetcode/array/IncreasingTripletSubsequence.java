@@ -1,7 +1,7 @@
 package com.leetcode.array;
 
 
-public class IncreasingTripletSubsequence {
+final class IncreasingTripletSubsequence {
     private IncreasingTripletSubsequence() {
     }
 
