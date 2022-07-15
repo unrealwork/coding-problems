@@ -25,7 +25,7 @@ class MaxAreaOfIslandTest {
                 arguments(new int[][] {
                         {0, 0, 0, 0, 0, 0, 0, 0}
                 }, 0),
-                arguments(new int[] {}, 0)
+                arguments(new int[][] {}, 0)
         );
     }
 
