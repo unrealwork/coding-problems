@@ -3,7 +3,7 @@ package com.leetcode.graph;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-class MaxAreaOfIsland {
+final class MaxAreaOfIsland {
     private static final char LAND = 1;
 
     private MaxAreaOfIsland() {
