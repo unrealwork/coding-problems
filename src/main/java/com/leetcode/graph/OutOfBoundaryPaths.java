@@ -32,8 +32,8 @@ final class OutOfBoundaryPaths {
     private static int nextScore(int[][] dp, int row, int col) {
         long nextScore = ((long) score(row - 1, col, dp)
                 + score(row + 1, col, dp)
-                + score(row, col + 1, dp) +
-                score(row, col - 1, dp)) % MODULO;
+                + score(row, col + 1, dp)
+                + score(row, col - 1, dp)) % MODULO;
         return (int) nextScore;
     }
 
