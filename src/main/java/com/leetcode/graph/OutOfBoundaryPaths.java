@@ -1,6 +1,8 @@
 package com.leetcode.graph;
 
 final class OutOfBoundaryPaths {
+    public static final int MODULO = 1000000007;
+
     private OutOfBoundaryPaths() {
     }
 
@@ -12,36 +14,44 @@ final class OutOfBoundaryPaths {
             for (int row = 0; row < m; row++) {
                 for (int col = 0; col < n; col++) {
                     if (i == 0) {
-                        startScore(m, n, dp, row, col);
+                        dp[row][col] = startScore(m, n, row, col);
                     } else {
-                        next[row][col] = score(row - 1, col, dp)
-                                + score(row + 1, col, dp)
-                                + score(row, col + 1, dp)
-                                + score(row, col - 1, dp);
+                        long nextScore = nextScore(dp, row, col);
+                        next[row][col] = (int) nextScore;
                     }
                 }
             }
             if (i != 0) {
                 dp = next;
             }
-            res += dp[startRow][startColumn];
+            res = (res + dp[startRow][startColumn]) % MODULO;
         }
         return res;
     }
 
-    private static void startScore(int m, int n, int[][] dp, int row, int col) {
+    private static int nextScore(int[][] dp, int row, int col) {
+        long nextScore = ((long) score(row - 1, col, dp)
+                + score(row + 1, col, dp)
+                + score(row, col + 1, dp) +
+                score(row, col - 1, dp)) % MODULO;
+        return (int) nextScore;
+    }
+
+    private static int startScore(int m, int n, int row, int col) {
+        int res = 0;
         if (row == 0) {
-            dp[row][col] += 1;
+            res++;
         }
         if (col == 0) {
-            dp[row][col] += 1;
+            res++;
         }
         if (row == m - 1) {
-            dp[row][col] += 1;
+            res++;
         }
         if (col == n - 1) {
-            dp[row][col] += 1;
+            res++;
         }
+        return res;
     }
 
     static int score(int row, int column, int[][] dp) {

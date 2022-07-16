@@ -15,7 +15,8 @@ class OutOfBoundaryPathsTest {
     static Stream<Arguments> testData() {
         return Stream.of(
                 arguments(1, 3, 3, 0, 1, 12),
-                arguments(2, 2, 2, 0, 0, 6)
+                arguments(2, 2, 2, 0, 0, 6),
+                arguments(8, 50, 23, 5, 26, 914783380)
         );
     }
 
