@@ -6,9 +6,6 @@ public class ListNode {
     @SuppressWarnings("checkstyle:visibilitymodifier")
     ListNode next;
 
-    ListNode() {
-    }
-
     ListNode(int val) {
         this.val = val;
     }
