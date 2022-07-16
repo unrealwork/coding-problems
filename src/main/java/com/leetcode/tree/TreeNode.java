@@ -4,7 +4,7 @@ import java.util.Objects;
 
 @SuppressWarnings("checkstyle:visibilitymodifier")
 final class TreeNode {
-    int val;
+    final int val;
     TreeNode left;
     TreeNode right;
 
@@ -20,8 +20,8 @@ final class TreeNode {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof TreeNode node) {
-            return isSameTree(this, node);
+        if (obj instanceof TreeNode) {
+            return isSameTree(this, (TreeNode) obj);
         }
         return false;
     }
