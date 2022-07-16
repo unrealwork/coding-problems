@@ -49,5 +49,5 @@ sonarqube {
 
 
 java {
-    version = 17
+    version = 11
 }
