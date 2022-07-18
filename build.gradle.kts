@@ -10,6 +10,7 @@ plugins {
     checkstyle
     jacoco
     id("org.sonarqube") version "3.4.0.2513"
+    id("io.qameta.allure") version "2.10.0"
 }
 
 object Versions {
@@ -44,6 +45,15 @@ sonarqube {
         property("sonar.projectKey", "unrealwork_coding-problems")
         property("sonar.organization", "unrealwork-github")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
+    }
+}
+
+allure {
+    version.set("2.10.0")
+    adapter {
+        frameworks {
+            junit5
+        }
     }
 }
 

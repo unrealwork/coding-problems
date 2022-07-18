@@ -1,5 +1,6 @@
 package com.leetcode.tree;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -8,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MinDepthBinaryTreeTest {
 
-    @ParameterizedTest
+    @Description("Should calculate minimal height of binary tree")
+    @ParameterizedTest(name = "#{index} - for tree [{0}] is {1}")
     @CsvSource( {
             "'',0",
             "'3,9,20,null,null,15,7',2",
