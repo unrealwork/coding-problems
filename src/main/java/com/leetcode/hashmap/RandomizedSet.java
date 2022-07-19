@@ -1,5 +1,6 @@
 package com.leetcode.hashmap;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ public final class RandomizedSet {
     public RandomizedSet() {
         this.indexMap = new HashMap<>();
         this.storage = new ArrayList<>();
-        this.random = new Random();
+        this.random = new SecureRandom();
     }
 
     static RandomizedSet of(int... elements) {
