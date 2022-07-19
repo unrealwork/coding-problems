@@ -41,6 +41,10 @@ class RandomizedSetTest {
                 Arguments.arguments(
                         RandomizedSet.of(),
                         4, false
+                ),
+                Arguments.arguments(
+                        RandomizedSet.of(4),
+                        4, true
                 )
         );
     }
