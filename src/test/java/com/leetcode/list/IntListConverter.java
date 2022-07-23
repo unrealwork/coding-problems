@@ -8,10 +8,10 @@ import org.junit.jupiter.params.converter.ArgumentConverter;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class ListConverter implements ArgumentConverter {
+public class IntListConverter implements ArgumentConverter {
     private final ArgumentConverter insArrayConverter;
 
-    public ListConverter() {
+    public IntListConverter() {
         insArrayConverter = new IntArrayConverter();
     }
 
