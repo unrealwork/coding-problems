@@ -63,8 +63,8 @@ public final class NumArray {
     }
 
     static final class SegmentTreeNode {
-        private int start;
-        private int end;
+        private final int start;
+        private final int end;
         private SegmentTreeNode left;
         private SegmentTreeNode right;
         private int sum;

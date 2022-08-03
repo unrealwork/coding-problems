@@ -14,7 +14,9 @@ class MyCalendarTest {
     public static Stream<Arguments> testData() {
         return Stream.of(
                 arguments(new int[][] {{10, 20}, {15, 25}, {20, 30}},
-                        new boolean[] {true, false, true})
+                        new boolean[] {true, false, true}),
+                arguments(new int[][] {{10, 20}, {10, 15}, {5, 15}},
+                        new boolean[] {true, false, false})
         );
     }
 
