@@ -10,7 +10,6 @@ public final class WordSearchII {
     private WordSearchII() {
     }
 
-    // TODO: TLE
     public static List<String> findWords(char[][] board, String[] words) {
         Trie trie = new Trie();
         boolean[][] visited = new boolean[board.length][board[0].length];
