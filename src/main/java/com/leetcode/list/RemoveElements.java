@@ -4,7 +4,7 @@ public final class RemoveElements {
     private RemoveElements() {
     }
 
-    public ListNode removeElements(ListNode head, int val) {
+    public static ListNode removeElements(ListNode head, int val) {
         ListNode res = null;
         ListNode last = null;
         ListNode it = head;
