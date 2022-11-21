@@ -3,4 +3,4 @@
 # coding-problems
 Solved coding challenges from different sites
 
-[![KnlnKS's LeetCode stats](https://leetcode-stats-six.vercel.app/api?username=Unrealwork)](https://github.com/KnlnKS/leetcode-stats)
+[![KnlnKS's LeetCode stats](https://leetcode-stats-six.vercel.app/api?username=Unrealwork)](https://leetcode.com/Unrealwork)
