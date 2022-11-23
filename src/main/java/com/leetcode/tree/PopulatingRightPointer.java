@@ -8,7 +8,7 @@ public final class PopulatingRightPointer {
 
     }
 
-    public Node connect(Node root) {
+    public static Node connect(Node root) {
         Node it = root;
         Node head;
         Node tail;
@@ -17,7 +17,7 @@ public final class PopulatingRightPointer {
             tail = null;
             while (it != null) {
                 if (it.left == null) {
-                    break;
+                    return root;
                 }
                 if (head == null) {
                     head = it.left;
@@ -30,7 +30,7 @@ public final class PopulatingRightPointer {
                 tail = tail.next;
                 it = it.next;
             }
-            if (head != null) {
+            if (tail != null) {
                 it = head;
             }
         }
