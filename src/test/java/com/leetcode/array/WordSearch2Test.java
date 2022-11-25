@@ -9,9 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static java.util.Arrays.asList;
-
-class WordSearchIITest {
+class WordSearch2Test {
 
     public static Stream<Arguments> testCases() {
         return Stream.of(
@@ -21,8 +19,14 @@ class WordSearchIITest {
                                 {'i', 'h', 'k', 'r'},
                                 {'i', 'f', 'l', 'v'}
                         },
-                        new String[] {"oath", "pea", "eat", "rain"},
-                        asList("eat", "oath")
+                        new String[] {"oath", "pea", "eat", "rain", "oathf"},
+                        List.of("eat", "oath", "oathf")
+                ),
+                Arguments.of(new char[][] {
+                                {'a'}
+                        },
+                        new String[] {"a"},
+                        List.of("a")
                 )
         );
     }
@@ -30,7 +34,8 @@ class WordSearchIITest {
     @ParameterizedTest
     @MethodSource("testCases")
     void testFindWords(char[][] board, String[] words, List<String> expected) {
-        var actual = WordSearchII.findWords(board, words);
+        var actual = WordSearch2.findWords(board, words);
         Assertions.assertEquals(new HashSet<>(expected), new HashSet<>(actual));
+        Assertions.assertEquals(expected.size(), actual.size());
     }
 }
