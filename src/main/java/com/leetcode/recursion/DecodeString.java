@@ -11,44 +11,30 @@ public final class DecodeString {
     }
 
     public static String decodeString(String s) {
-        return decode(s);
-    }
-
-    public static String decode(String s) {
+        Deque<Integer> count = new ArrayDeque<>();
+        Deque<StringBuilder> result = new ArrayDeque<>();
         int i = 0;
-        Deque<Integer> repeatStack = new ArrayDeque<>();
-        StringBuilder result = new StringBuilder();
-        StringBuilder current = new StringBuilder();
-        Deque<String> resultStack = new ArrayDeque<>();
+        result.push(new StringBuilder());
         while (i < s.length()) {
-            int repeatCount = 0;
-            while (Character.isDigit(s.charAt(i))) {
-                repeatCount = repeatCount * BASE + (s.charAt(i) - '0');
-                i++;
-            }
-            if (s.charAt(i) == '[') {
-                repeatStack.addLast(repeatCount);
-                resultStack.addLast(current.toString());
-                current.setLength(0);
-                i++; // skip opening bracket
-            }
-            while (i < s.length() && Character.isLetter(s.charAt(i))) {
-                current.append(s.charAt(i));
-                i++;
-            }
-            if (i < s.length() && s.charAt(i) == ']') {
-                String stackPart = resultStack.removeLast();
-                stackPart += (current.toString().repeat(repeatStack.removeLast()));
-                resultStack.addLast(stackPart);
-                current.setLength(0);
-                i++;
-            } else {
-                if (repeatStack.isEmpty()) {
-                    result.append(resultStack.removeLast());
+            char ch = s.charAt(i);
+            if (Character.isDigit(s.charAt(i))) {
+                int resultNumber = s.charAt(i) - '0';
+                while (Character.isDigit(s.charAt(i + 1))) {
+                    resultNumber = resultNumber * BASE + (s.charAt(i + 1) - '0');
+                    i++;
                 }
-                current.setLength(0);
+                count.push(resultNumber);
+            } else if (ch == '[') {
+                result.push(new StringBuilder());
+            } else if (ch == ']') {
+                String str = result.pop().toString();
+                int times = count.pop();
+                result.peek().append(str.repeat(times));
+            } else {
+                result.peek().append(ch);
             }
+            i++;
         }
-        return result.toString();
+        return result.pop().toString();
     }
 }
