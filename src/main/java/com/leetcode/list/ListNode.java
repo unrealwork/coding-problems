@@ -2,9 +2,9 @@ package com.leetcode.list;
 
 public class ListNode {
     @SuppressWarnings("checkstyle:visibilitymodifier")
-    int val;
+    public int val;
     @SuppressWarnings("checkstyle:visibilitymodifier")
-    ListNode next;
+    public ListNode next;
 
     ListNode(int val) {
         this.val = val;
