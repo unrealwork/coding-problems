@@ -4,7 +4,7 @@ import java.util.Objects;
 
 @SuppressWarnings("checkstyle:visibilitymodifier")
 final class TreeNode {
-    final int val;
+    int val;
     TreeNode left;
     TreeNode right;
 

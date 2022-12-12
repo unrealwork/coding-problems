@@ -1,7 +1,7 @@
 package com.leetcode.string;
 
 public final class PermuationInString {
-    public static final int ALPHABET_SIZE = 26;
+    private static final int ALPHABET_SIZE = 26;
 
     private PermuationInString() {
     }
@@ -26,11 +26,6 @@ public final class PermuationInString {
         return false;
     }
 
-
-    private static int symbolIndex(String s, int index) {
-        return s.charAt(index) - 'a';
-    }
-
     private static boolean same(int[] d1, int[] d2) {
         for (int i = 0; i < d1.length; i++) {
             if (d1[i] != d2[i]) {
@@ -46,5 +41,9 @@ public final class PermuationInString {
             dict[symbolIndex(s, i)]++;
         }
         return dict;
+    }
+
+    private static int symbolIndex(String s, int index) {
+        return s.charAt(index) - 'a';
     }
 }
