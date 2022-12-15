@@ -13,7 +13,9 @@ class NextGreaterElement2Test {
     @CsvSource( {
             "'1,2,3,4,3','2,3,4,-1,4'",
             "'1,2,1','2,-1,2'",
-            "'5,4,3,2,1','-1,5,5,5,5'"
+            "'5,4,3,2,1','-1,5,5,5,5'",
+            "'1,1,1,1,1','-1,-1,-1,-1,-1'",
+            "'1,2,3,2,1','2,3,-1,3,2'"
     })
     void tesNextGreaterElements(@ConvertWith(IntArrayConverter.class) int[] nums,
                                 @ConvertWith(IntArrayConverter.class) int[] expected) {

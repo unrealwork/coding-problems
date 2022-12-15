@@ -8,48 +8,40 @@ public final class NextGreaterElement2 {
     }
 
     public static int[] nextGreaterElements(int[] nums) {
-        Deque<Integer> deque = monotonicStack(nums);
+        Deque<Integer> deque = new ArrayDeque<>();
         int[] res = new int[nums.length];
-        int i = 0;
-        while (!deque.isEmpty()) {
-            if (i == deque.peekFirst()) {
-                deque.removeFirst();
-            }
-            if (!deque.isEmpty()) {
-                res[i] = nums[deque.peekFirst()];
-            } else {
-                res[i] = -1;
-            }
-            i++;
-        }
-        if (i == 0) {
-            res[i] = -1;
-            i++;
-        }
-        for (int j = 0; j < nums.length; j++) {
-            if (nums[j] > nums[nums.length - 1]) {
-                deque.addLast(j);
-                break;
-            }
-        }
-        for (int j = i; j < nums.length; j++) {
+        for (int i = 0; i < nums.length; i++) {
             if (deque.isEmpty()) {
-                res[j] = -1;
+                deque.addLast(i);
             } else {
-                res[j] = nums[deque.peekLast()];
+                if (nums[i] <= nums[deque.peekLast()]) {
+                    deque.addLast(i);
+                } else {
+                    while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
+                        int lessIndex = deque.removeLast();
+                        res[lessIndex] = nums[i];
+                    }
+                    deque.addLast(i);
+                }
             }
         }
+        hadnleUncovered(nums, deque, res);
         return res;
     }
 
-    private static Deque<Integer> monotonicStack(int[] nums) {
-        Deque<Integer> deque = new ArrayDeque<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (deque.isEmpty() || nums[i] > nums[deque.peekLast()]) {
-                deque.addLast(i);
+    private static void hadnleUncovered(int[] nums, Deque<Integer> deque, int[] res) {
+        int i = 0;
+
+        while (!deque.isEmpty()) {
+            while (i < deque.peekLast() && nums[i] <= nums[deque.peekLast()]) {
+                i++;
+            }
+            if (nums[i] == nums[deque.peekLast()]) {
+                res[deque.removeLast()] = -1;
+            } else {
+                res[deque.removeLast()] = nums[i];
             }
         }
-        deque.removeFirst();
-        return deque;
     }
+
 }
